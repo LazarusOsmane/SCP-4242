@@ -1,0 +1,175 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    git_training                                       :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: engooh <erickngooh.1@gmail.com>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/09/09 13:09:45 by engooh            #+#    #+#              #
+#    Updated: 2021/09/11 19:51:52 by engooh           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+
+# INSTALTION:
+	
+	$ sudo apt-get update
+	$ sudo apt-get install git-all 
+	$ git --version 
+
+
+
+
+# GIT SETUP: 
+
+	git config: commande qui appelle et modifie les variables de configuration de git, ces variable sont stocker a trois endroits differents
+			/etc/gitconfig
+			~/.gitconfig 
+			.git/gitconfig
+	# GIT CONFIG
+		
+		/etc/gitconfig configuration a echelle systme 
+		$ git config --systme 
+
+		~/.gitcongif configuration a echelle user 
+		$ git config --global 
+		
+		.git/config configuration a l'echelle local specifique a un seul depot
+		 $ git config --local 
+	
+	# GET GIT CONFIG
+		
+		lister les variables de configuration et leur origines
+		$ git config --list --show-origin
+		
+		lister la valeur du variable de configuration
+		$ git config user.name 
+		>> rick grims
+
+	# CONFIG IDENTITY 
+		$ git config --global user.email "user@email.com"
+		$ git config --global user.name  "user"
+
+	# CONFIG NAME BRANCHE
+		$ git config --global init.defaultBranch main
+
+	# CONFIG EDITOR VIM 
+		$  git config --global core.editor vim
+
+# GET HELP ON GIT: 
+
+	$ git help <commande>
+	$ git <commande> --help or git <commande> -h
+	$ man git <commande>
+
+
+
+
+# STARTING REPOSITORY GIT: 
+	
+	.git: le repertoire .git contiend tout les fichiers necsesaire a la gestion et versionning de notre projet
+
+	 # CREAT REPOSITORY GIT
+	 	$ git init 
+
+	 # CLONNING REPOSITORY GIT 
+		$ git clone https://github.com/depot/depot
+		$ git clone https://github.com/depot/depoit <name>
+
+
+
+
+# CHANGE AND SAVE CHANGES IN GIT:
+	# FOLLOW FILES STATUS
+        	M  = modifier 
+		A  = nouveaux && indexe
+		?? = non suivis 
+		$ git status <files>
+		$ git status --short or git status -s  
+
+	# TRACKE FILES
+		git add suis le fichier dans son etat actuel 
+		$ git add <files>
+
+	# IGNORE FILE				
+		.gitignore touts les fichiers place dans .gitignore seront ignorer par git PAR 
+		
+		# GITIGNORE EXAMPLE:
+			# pas de fichier .a 
+			*.a
+			# mais suivre lib.a malgré la règle précédente
+			!lib.a
+			# ignorer uniquement le fichier TODO à la racine du projet
+			/TODO
+			# ignorer tous les fichiers dans le répertoire build
+			build/
+			# ignorer doc/notes.txt, mais pas doc/server/arch.txt
+			doc/*.txt
+			# ignorer tous les fichiers .txt sous le répertoire doc/
+			doc/**/*.txt "
+
+	# CHANGES DISPLAY
+		git diff affiche les modifications effectue sur les fichiers untracked mais deja commiter
+		$ git diff
+		git diff --staged affiche les modification sur les fichier tracked mais pas encore commiter
+		$ git diff --staged 
+  	
+	#CHANGES SAVE
+		$ git commit 
+		$ git commit -m 
+		ajouter le sortie de diff aux text de commit: -v
+		$ git commit -v 
+		commiter les fichiers tracked sans faire de git add 
+		$ git commit -a 
+	
+	# DELETE FILE 
+		suprimer un fichier repertoire de travail et de la zone de transit 
+		$ git rm -f <file> or rm <file> && git rm <file>file
+		suprimer un fichier de la zone de transit 
+		$ git rm --cached 
+
+	# RENAME FILE
+		$ git mv <file>
+
+
+
+
+# HISTORY DISPLAY COMMIT
+	
+	git log affiche l'historique des commit  
+	$ git log
+
+	afficher l'historique des commande et les diff effectue a chaque commit 
+	$ git log -p or git log --patch -1
+ 
+	afficher des stats de chaque commit (nombre de fichier modifer, de line ajouter ou surpimer...)
+	$ git log --stat
+
+	afficher l'historique des commande dans un format specifique
+	$ git log --pretty=value  (vaule = oneline || short || full || fuller)
+
+	afficher l'historique des commande dans notre propre format
+	$ git log --pretty=format:"%h %ar %s"
+	
+	afficher l'historique des branche et des fusion sous forme de graphique 
+	$ git log --grah  
+
+		# SPECIFICATUER DE FORMAT 
+			%H  : Valider le hachage
+			%h  : Hachage de commit abrégé
+			%T  : Hachis d'arbre
+			%t  : Arbre de hachage abrégé
+			%P  : Hachages parent
+			%p  : Hachages parent abrégés
+			%an : Nom de l'auteur
+			%ae : Courriel de l'auteur
+			%ad : Date de l'auteur (le format respecte l'option --date=)
+			%ar : Date de l'auteur, parent
+			%cn : Nom du commanditaire
+			%ce : Adresse e-mail du commanditaire
+			%cd : Date d'engagement
+			%cr : Date d'engagement, relative
+			%s  : Sujet 
+		
