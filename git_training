@@ -6,7 +6,7 @@
 #    By: engooh <erickngooh.1@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/09 13:09:45 by engooh            #+#    #+#              #
-#    Updated: 2021/09/11 19:51:52 by engooh           ###   ########.fr        #
+#    Updated: 2021/09/13 09:49:21 by engooh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -171,5 +171,46 @@
 			%ce : Adresse e-mail du commanditaire
 			%cd : Date d'engagement
 			%cr : Date d'engagement, relative
-			%s  : Sujet 
-		
+			%s  : Sujet
+ 	
+	affichier l'historique des commit dans le temps
+	$ git log --since=<nbr>.days || week || mounth || years 
+	$ git log --since=2021-09-10 
+
+	afficher l'historique des commit sur un chaine de caracteres specifique
+	$ git log -S "name_function"
+
+	afficher l'historique des commit d'un chemin de fichier specifique
+	$ git log -- /chemin/dossier/ 
+	$ git log -- /chemin/dossier/fichier
+
+# CANCEL ACTIONS
+	
+	# REPLACE LAST COMMIT
+		$ git commit --amend
+	
+	# UNTRACK FILES
+		$ git reset Head file.txt
+		$ git restore --staged file.txt
+	
+	# CANCEL CHANGES
+		$ git checkout -- file.txt 
+		$ git restore file.txt
+
+# remote depots
+	
+	# CHECK REMOTE DEPOTS
+		$ git remote -v 
+	# SHOW INFO REMOTE DEPOTS
+		$ git remote show <name remote depot>
+	# ADD REMOTE DEPOTS
+		$ git remote add <name> <url>
+	# RECOVERY DATA
+		$ git fetch <name remote depots>
+	# PUSH CHANGES REMOTE DEPOT
+		$ git push <name remote depots> <name branche>
+	# RENAME REMOTE DEPOT
+		$ git remote rename <old name> <new name>
+	# REMOVE REMOTE DEPOT 
+		$ git remote rm <name remote depot>
+
